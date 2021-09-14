@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:App1.ViewModels" x:DataType="viewmodels:ItemDetailViewModel"
+             x:Class="App1.Views.ItemDetailPage"
+             
+             Title="{Binding Title}">
+    <RefreshView x:DataType="viewmodels:ItemDetailViewModel" Command="{Binding LoadItemsCommand2}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+   <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="gradient1.jpg" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Spacing="20" Margin="20, 50" >
+                <Label Text="{Binding Text}" FontSize="16" VerticalOptions="Center" TextColor="White"/>
+             <Label Text="," FontSize="16"  TextColor="White" Margin="-15,0" />
+                <Label Text="{Binding Country}" FontSize="16" VerticalOptions="Center" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Margin="0, 20" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image  Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100" Margin="0,0" />
+                    <Label Text="{Binding Temperature}" TextColor="White" FontSize="70" FontAttributes="Bold" VerticalOptions="Center"/>
+                    <Label Text="°C" TextColor="White" FontSize="34" VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="{Binding Description}" TextColor="White" FontSize="16" Padding="38,2,2,2" />
+                </StackLayout>
+            </StackLayout>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <Image Source="humidity.png" HeightRequest="25" HorizontalOptions="Center"/>
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Humidity}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Humidity" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <Image Source="windy.png" HeightRequest="25" HorizontalOptions="Center"/>
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Wind}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Wind" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <Image Source="barometer.png" HeightRequest="25" HorizontalOptions="Center"/>
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Pressure}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Pressure" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <Image Source="clouds.png" HeightRequest="25" HorizontalOptions="Center"/>
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Clouds}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Clouds" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </RefreshView>
+</ContentPage>
